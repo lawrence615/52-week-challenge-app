@@ -1,0 +1,10 @@
+.primary-color {
+    background-color: #8BC34A;
+}
+
+.primary-dark-color {
+    background-color: #689F38;
+}
+.pull-right{
+    float: right !important
+}
