@@ -8,7 +8,7 @@
                         <div class="text-center" style="display: inline-flex">
                             <div class="challenge-plan" @click="onPlanClicked(challenge_plan)"
                                  v-for="challenge_plan in orderBy(challenge_plans_arr, 'deposit')">
-                                <img :src="challenge_plan.icon" width="100" height="100"/>
+                                <img class="challenge-plan-icon" :src="challenge_plan.icon" width="100" height="100"/>
                                 <div>{{ challenge_plan.title }}</div>
                             </div>
                         </div>
@@ -26,7 +26,6 @@
     import database from  '../../database';
     import ChallengeDescription from './ChallengeDescription.vue';
 
-    let refChallenges = database.getRef('challenges');
 
     export default{
         name: 'join',
@@ -42,6 +41,7 @@
         },
         mounted(){
             let self = this;
+            let refChallenges = database.getRef('challenges');
             refChallenges.on("child_added", function (snapshot) {
                 self.data = {
                     'key': snapshot.key,
@@ -76,6 +76,10 @@
         margin-top: 10px;
         max-width: 200px;
         font-weight: 400;
+    }
+
+    img.challenge-plan-icon {
+
     }
 
 </style>
