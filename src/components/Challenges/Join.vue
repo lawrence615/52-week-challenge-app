@@ -1,57 +1,71 @@
 <template>
-    <el-card>
-        <div class="text-center">
-            <el-row>
-                <div>
-                    <h2>Choose a savings plan</h2>
-                    <div class="text-center" style="display: inline-flex">
-                        <div class="challenge-plan" @click="onPlanClicked(25)" v-for="challenge_plan in challenge_plans_arr">
-                            <img :src="challenge_plan.icon" width="100" height="100"/>
-                            <div>{{ challenge_plan.title }}</div>
+    <div class="join">
+        <el-card>
+            <div class="text-center">
+                <el-row>
+                    <div>
+                        <h2>Choose a savings plan</h2>
+                        <div class="text-center" style="display: inline-flex">
+                            <div class="challenge-plan" @click="onPlanClicked(challenge_plan)"
+                                 v-for="challenge_plan in orderBy(challenge_plans_arr, 'deposit')">
+                                <img :src="challenge_plan.icon" width="100" height="100"/>
+                                <div>{{ challenge_plan.title }}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </el-row>
-        </div>
-    </el-card>
+                </el-row>
+            </div>
+        </el-card>
+        <challenge-description :challenge='challenge'></challenge-description>
+    </div>
 </template>
+
+
 <script>
 
     import database from  '../../database';
+    import ChallengeDescription from './ChallengeDescription.vue';
 
-//    let refChallenges = database.getRef('challenges');
+    let refChallenges = database.getRef('challenges');
 
     export default{
         name: 'join',
+        components: {
+            challengeDescription: ChallengeDescription
+        },
         data: function () {
             return {
                 challenge_plans_arr: [],
-                data: {}
+                data: {},
+                challenge: {}
             }
         },
         mounted(){
             let self = this;
-//            refChallenges.on("child_added", function (snapshot) {
-//                self.data = {
-//                    'key': snapshot.key,
-//                    'deposit': snapshot.val().deposit,
-//                    'description': snapshot.val().description,
-//                    'icon': snapshot.val().icon,
-//                    'title': snapshot.val().title,
-//                    'total': snapshot.val().total,
-//                };
-//
-//                self.challenge_plans_arr.push(self.data);
-//            });
+            refChallenges.on("child_added", function (snapshot) {
+                self.data = {
+                    'key': snapshot.key,
+                    'deposit': snapshot.val().deposit,
+                    'description': snapshot.val().description,
+                    'icon': snapshot.val().icon,
+                    'title': snapshot.val().title,
+                    'total': snapshot.val().total,
+                };
+
+                self.challenge_plans_arr.push(self.data);
+            });
         },
         methods: {
-            onPlanClicked(id){
-                alert(id);
+            onPlanClicked(challenge){
+                this.challenge = challenge;
             }
         }
     }
 </script>
+
+
 <style>
+
 
     .challenge-plan {
         padding: 20px;
