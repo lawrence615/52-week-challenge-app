@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Vue2Filters from 'vue2-filters';
 import App from './App.vue'
 import router from './routes';
 import firebase from 'firebase';
@@ -8,6 +9,7 @@ import {firebaseConfig} from './firebase-conf';
 import {Dropdown, Menu, MenuItem, Submenu, Card, Table, TableColumn, Button, Row, Col, Checkbox} from 'element-ui';
 
 
+Vue.use(Vue2Filters);
 Vue.use(VueFire);
 
 
