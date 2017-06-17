@@ -6,7 +6,7 @@
                 <el-col :span="4">
                     <side-navbar></side-navbar>
                 </el-col>
-                <el-col :span="19">
+                <el-col class="app-content" :span="19">
                     <router-view></router-view>
                 </el-col>
             </el-row>
@@ -60,6 +60,9 @@
 <style>
 
     #not_authenticated{
+        margin-top: 40px;
+    }
+    .app-content{
         margin-top: 40px;
     }
 
