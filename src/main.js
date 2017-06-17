@@ -6,12 +6,30 @@ import firebase from 'firebase';
 import VueFire from 'vuefire';
 import database from './database'
 import {firebaseConfig} from './firebase-conf';
-import {Dropdown, Menu, MenuItem, Submenu, Card, Table, TableColumn, Button, Row, Col, Checkbox} from 'element-ui';
+import {
+    Dropdown,
+    Menu,
+    MenuItem,
+    Submenu,
+    Card,
+    Table,
+    TableColumn,
+    Button,
+    Row,
+    Col,
+    Checkbox,
+    DatePicker
+} from 'element-ui';
+import lang from 'element-ui/lib/locale/lang/en'
+import locale from 'element-ui/lib/locale'
 
 
 Vue.use(Vue2Filters);
 Vue.use(VueFire);
 
+
+// configure language
+locale.use(lang);
 
 // ElementUI Components
 Vue.use(Dropdown);
@@ -25,6 +43,7 @@ Vue.use(Button);
 Vue.use(Row);
 Vue.use(Col);
 Vue.use(Checkbox);
+Vue.use(DatePicker);
 
 
 const initApp = () => {
