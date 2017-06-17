@@ -6,7 +6,8 @@
                     <div>
                         <h2>Choose a savings plan</h2>
                         <div class="text-center" style="display: inline-flex">
-                            <div class="challenge-plan" @click="onPlanClicked(challenge_plan)"
+                            <div class="challenge-plan" :class="{ active:isActive(challenge.deposit)}"
+                                 @click="onPlanClicked(challenge_plan)"
                                  v-for="challenge_plan in orderBy(challenge_plans_arr, 'deposit')">
                                 <img class="challenge-plan-icon" :src="challenge_plan.icon" width="100" height="100"/>
                                 <div>{{ challenge_plan.title }}</div>
@@ -36,13 +37,15 @@
             return {
                 challenge_plans_arr: [],
                 data: {},
-                challenge: {}
+                challenge: {},
+//                isActive: false,
+                activePlan: 0,
             }
         },
         mounted(){
             let self = this;
-            let refChallenges = database.getRef('challenges');
-            refChallenges.on("child_added", function (snapshot) {
+
+            database.getRef('challenges').on("child_added", function (snapshot) {
                 self.data = {
                     'key': snapshot.key,
                     'deposit': snapshot.val().deposit,
@@ -57,7 +60,20 @@
         },
         methods: {
             onPlanClicked(challenge){
+                this.activePlan = challenge.deposit;
                 this.challenge = challenge;
+            },
+            isActive(deposit){
+                if (this.activePlan === 0) {
+                    console.log('No plan selected');
+                    return;
+                }
+                console.log(deposit);
+                if (deposit === this.activePlan) {
+                    return true;
+                }
+
+                return '';
             }
         }
     }
