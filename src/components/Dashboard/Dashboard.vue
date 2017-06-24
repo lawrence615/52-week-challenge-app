@@ -4,17 +4,19 @@
         <br/>
 
         <el-table v-if="tableData.length > 0" :data="tableData" stripe>
-            <el-table-column prop="key" label="#" width="50"></el-table-column>
+            <!--<el-table-column prop="key" label="#" width="50"></el-table-column>-->
             <el-table-column prop="title" label="Title"></el-table-column>
-            <el-table-column prop="increment" label="Deposit amount"></el-table-column>
-            <el-table-column prop="start_date" label="Start date"></el-table-column>
-            <el-table-column prop="end_date" label="End date"></el-table-column>
-            <el-table-column label="Operations">
+            <el-table-column prop="increment" width="150" label="Deposit amount"></el-table-column>
+            <el-table-column prop="start_date" width="120" label="Start date"></el-table-column>
+            <el-table-column prop="end_date" width="120" label="End date"></el-table-column>
+            <el-table-column label="Operations" width="300">
                 <template scope="scope">
                     <el-button @click="challengeDetails" size="small">Details</el-button>
                     <el-button @click.native.prevent="challengeSave(tableData[scope.$index].key)" type="primary"
                                size="small">Save
                     </el-button>
+                    <el-button @click="challengeDetails" type="warning" size="small">Archive</el-button>
+                    <el-button @click="challengeDetails" type="danger" size="small">Delete</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -51,10 +53,7 @@
             const user = auth.getUser();
             if (user.uid) {
                 let self = this;
-                let refUserChallenges = database.getRef('user-challenges');
-
-                refUserChallenges.orderByChild('user_id').equalTo(user.uid).on("child_added", function (snapshot) {
-
+                database.getRef('user-challenges').orderByChild('user_id').equalTo(user.uid).on("child_added", function (snapshot) {
                     self.data = {
                         'key': snapshot.key,
                         'challenge_id': snapshot.val().challenge_id,
@@ -64,7 +63,6 @@
                         'end_date': snapshot.val().end_date,
                     };
 
-                    console.log(self.data);
                     self.tableData.push(self.data);
                 });
             }
