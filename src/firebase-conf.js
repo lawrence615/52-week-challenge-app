@@ -12,7 +12,3 @@ let firebaseConfig = {
 
 
 export {firebaseConfig};
-
-// const firebaseApp = Firebase.initializeApp(config);
-//
-// export default firebaseApp;

@@ -2,6 +2,9 @@
 
 > A Vue.js project to practise skills gained by devloping a rookie manager.
 
+# Demo
+[___Demo___](https://week-challenge-app.firebaseapp.com)
+
 ## Build Setup
 
 ``` bash
