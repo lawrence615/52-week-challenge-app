@@ -17,7 +17,7 @@
                 </el-row>
             </div>
         </el-card>
-        <challenge-description :challenge='challenge'></challenge-description>
+        <challenge-description @challenge-joined="onChallengeJoined" :challenge='challenge'></challenge-description>
     </div>
 </template>
 
@@ -25,7 +25,11 @@
 <script>
 
     import database from  '../../database';
+    import auth from  '../../auth';
     import ChallengeDescription from './ChallengeDescription.vue';
+
+
+    const user = auth.getUser();
 
 
     export default{
@@ -40,6 +44,7 @@
                 challenge: {},
 //                isActive: false,
                 activePlan: 0,
+                user
             }
         },
         mounted(){
@@ -74,6 +79,17 @@
                 }
 
                 return '';
+            },
+            onChallengeJoined(value){
+                database.getRef('user-challenges').push({
+                    'challenge_id': value.challenge_id,
+                    'end_date': value.end_date,
+                    'increment': value.increment,
+                    'start_date': value.start_date,
+                    'title': value.title,
+                    'user_id': user.uid
+                });
+                this.$router.push({name: 'dashboard'})
             }
         }
     }
