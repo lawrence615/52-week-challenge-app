@@ -1,7 +1,7 @@
 <template>
-    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item class="white" index="1">#52 Week Challenge</el-menu-item>
-        <el-menu-item index="3"><a href="https://www.ele.me">Dashboard</a></el-menu-item>
+    <el-menu router theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+        <el-menu-item class="white" index="0">#52 Week Challenge</el-menu-item>
+        <el-menu-item index="1" route="/dashboard">Dashboard</el-menu-item>
         <el-submenu index="2" class="pull-right">
             <template slot="title">
                 <img class="user-image" :src="user.photoURL"/>
