@@ -1,14 +1,14 @@
 <template>
     <el-row :gutter="20">
         <el-col :span="8" v-for="i in columCount">
-            <table class="table">
+            <table class="table table-striped table-bordered table-sm table-responsive">
                 <thead>
                 <tr>
                     <th bgcolor="#FF4949">Week</th>
                     <th bgcolor="#F7BA2A">Date</th>
                     <th bgcolor="#13CE66">Deposit</th>
                     <th bgcolor="fuchsia">Total</th>
-                    <th><i class="el-icon-check"></i></th>
+                    <th bgcolor="#eeeeee"><i class="el-icon-check"></i></th>
                 </tr>
                 </thead>
                 <tbody>
