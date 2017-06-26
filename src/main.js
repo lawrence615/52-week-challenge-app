@@ -17,8 +17,10 @@ import {
     Button,
     Row,
     Col,
+    CheckboxGroup,
     Checkbox,
-    DatePicker
+    DatePicker,
+    Icon
 } from 'element-ui';
 import lang from 'element-ui/lib/locale/lang/en';
 import locale from 'element-ui/lib/locale';
@@ -44,8 +46,10 @@ Vue.use(TableColumn);
 Vue.use(Button);
 Vue.use(Row);
 Vue.use(Col);
+Vue.use(CheckboxGroup);
 Vue.use(Checkbox);
 Vue.use(DatePicker);
+Vue.use(Icon);
 
 
 const initApp = () => {
@@ -55,6 +59,7 @@ const initApp = () => {
 
 
 initApp();
+
 
 new Vue({
     el: '#app',
