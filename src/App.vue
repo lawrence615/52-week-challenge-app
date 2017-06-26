@@ -2,9 +2,9 @@
     <div id="app">
         <div v-show="user.uid">
             <top-navbar :user='user' @onLogout="onLogout"></top-navbar>
-            <el-row :gutter="20">
+            <el-row id="app-row" :gutter="20">
                 <el-col :span="4">
-                    <side-navbar></side-navbar>
+                    <side-navbar id="side-navbar"></side-navbar>
                 </el-col>
                 <el-col class="app-content" :span="19">
                     <router-view></router-view>
@@ -47,7 +47,6 @@
         mounted(){
 
 
-
         },
         methods: {
             onLogout(){
@@ -59,11 +58,16 @@
 
 <style>
 
-    #not_authenticated{
+    #not_authenticated {
         margin-top: 40px;
     }
-    .app-content{
+
+    .app-content {
         margin-top: 40px;
+    }
+
+    #app-row {
+        height: 100%;
     }
 
 </style>

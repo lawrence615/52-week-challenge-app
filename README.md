@@ -3,7 +3,11 @@
 > A Vue.js project to practise skills gained by devloping a rookie manager.
 
 # Demo
-[___Demo___](https://week-challenge-app.firebaseapp.com)
+Click[__here__](https://week-challenge-app.firebaseapp.com) to view the demo.
+
+
+![Screenshot 1]
+
 
 ## Build Setup
 
@@ -17,5 +21,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).

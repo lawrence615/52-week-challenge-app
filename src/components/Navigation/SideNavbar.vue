@@ -15,6 +15,7 @@
 </script>
 <style>
     .el-menu-vertical{
-        min-height: 650px;
+        min-height: 750px;
+        /*height: 100%;*/
     }
 </style>

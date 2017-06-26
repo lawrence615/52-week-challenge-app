@@ -57,9 +57,9 @@
                     this.savingWeeks.push({
                         'week_counter': week_counter++,
 //                        'start': start_date.format("YYYY-MM-D"),
-                        'start': start_date.format("D-MM-YY"),
+                        'start': start_date.format("D/MM/YY"),
 //                        'end': start_date.add(1, 'week').format("YYYY-MM-D"),
-                        'end': start_date.add(1, 'week').format("D-MM-YY"),
+                        'end': start_date.add(1, 'week').format("D/MM/YY"),
                         'deposit': initial_deposit_amount += this.challengeDetails.increment,
                         'total_deposited_amount': total_deposited_amount += initial_deposit_amount
                     });
