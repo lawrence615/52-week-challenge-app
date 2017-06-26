@@ -11,12 +11,10 @@
             <el-table-column prop="end_date" width="120" label="End date"></el-table-column>
             <el-table-column label="Operations" width="300">
                 <template scope="scope">
-                    <el-button @click="challengeDetails" size="small">Details</el-button>
-                    <el-button @click.native.prevent="challengeSave(tableData[scope.$index].key)" type="primary"
-                               size="small">Save
+                    <el-button @click.native.prevent="onDetails(tableData[scope.$index].key)" size="small">Details
                     </el-button>
-                    <el-button @click="challengeDetails" type="warning" size="small">Archive</el-button>
-                    <el-button @click="challengeDetails" type="danger" size="small">Delete</el-button>
+                    <el-button @click="onArchive" type="warning" size="small">Archive</el-button>
+                    <el-button @click="onDelete" type="danger" size="small">Delete</el-button>
                 </template>
             </el-table-column>
         </el-table>
@@ -69,11 +67,14 @@
 
         },
         methods: {
-            challengeDetails(){
-                alert('Show savings');
+            onDetails(key){
+                this.$router.push({name: 'challenge_details', params: {challenge_id: key}})
             },
-            challengeSave(key){
-                this.$router.push({name: 'deposit', params: {challenge_id: key}})
+            onArchive(){
+
+            },
+            onDelete(){
+
             }
         }
     }
