@@ -6,8 +6,7 @@
 Click[__here__](https://week-challenge-app.firebaseapp.com) to view the demo.
 
 
-![Screenshot 1]
-
+![Screenshot 1](https://github.com/lawrence615/52-week-challenge-app/blob/master/screenshots/screenshot_1.png)
 
 ## Build Setup
 
